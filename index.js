@@ -4,7 +4,7 @@ import { validatePR } from "./ccc";
 
 try {
   const title = github.context.payload.pull_request.title;
-  const prTitleRegexPattern = core.getInput("pr-title-regex");
+  const prTitleRegexPattern = "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\([\w\-\.]+\))?(!)?: ([\w ])+([\s\S]*)";
 
   const result = validatePR({
     title,
