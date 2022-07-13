@@ -8550,7 +8550,7 @@ const github = __webpack_require__(469);
 
 try {
   const title = github.context.payload.pull_request.title;
-  const prTitleRegexPattern = "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\([\w\-\.]+\))?(!)?: ([\w ])+([\s\S]*)";
+  const prTitleRegexPattern = /^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\([\w\-\.]+\))?(!)?: ([\w ])+([\s\S]*)/gm;
 
   const result = validatePR({
     title,
