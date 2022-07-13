@@ -1,8 +1,6 @@
 export function validatePR({
   title,
-  body,
   prTitleRegexPattern,
-  prBodyRegexPattern,
 }) {
   const prTitleRegExp = new RegExp(prTitleRegexPattern);
   const prTitleMatchResult = prTitleRegExp.test(title);
@@ -17,30 +15,14 @@ export function validatePR({
     };
   }
 
-  const prBodyRegExp = new RegExp(prBodyRegexPattern);
-  if (!prBodyRegExp.test(body)) {
-    return {
-      status: "failure",
-      message: `Pull request body 
-      **************************************************************************************
-      ${body}
-      **************************************************************************************
-      does not match ${prBodyRegexPattern}`,
-    };
-  }
   return {
     status: "success",
     message: `
-      Pull request title 
+      Pull request title is valid under convetional commits
       **************************************************************************************
       ${title}
       **************************************************************************************
       matches ${prTitleRegexPattern}
-      Pull request body
-      **************************************************************************************
-      ${body}
-      **************************************************************************************
-      matches ${prBodyRegexPattern}
       `,
   };
 }

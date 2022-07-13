@@ -7,11 +7,7 @@ inputs:
   pr-title-regex:
     description: "You can override the regex that is used to match PR title "
     required: false
-    default: "^(.+)(?:(([^)s]+)))?: (.+)"
-  pr-body-regex:
-    description: "You can override the regex that is used to match PR body "
-    required: false
-    default: '(.*\n)+(.*)'
+    default: "^(?<type>build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|¯\\_\(ツ\)_\/¯)(?<scope>\(\w+\)?((?=:\s)|(?=!:\s)))?(?<breaking>!)?(?<subject>:\s.*)?|^(?<merge>Merge \w+)"
 runs:
   using: "node12"
   main: "dist/index.js"
